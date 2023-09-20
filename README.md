@@ -1,6 +1,5 @@
 # Trabalho Grafos
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
-
+Trabalho que busca uma solucao para um sistema de transporte de passageiros se baseando na materias de programacao modular e teoria de grafos.
 ## Alunos integrantes da equipe
 
 * Daniel Nicesio Campos
