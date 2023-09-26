@@ -9,5 +9,5 @@ Trabalho que busca uma solucao para um sistema de transporte de passageiros se b
 
 ## Professor responsável 
 
-* Nome completo do professor 1
+* Luiz Henrique da Costa Silva
 
