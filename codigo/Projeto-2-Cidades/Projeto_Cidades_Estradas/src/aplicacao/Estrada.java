@@ -4,7 +4,6 @@ public class Estrada {
 
 	private int id;
 	private int distancia;
-	private String visitacao;
 	Cidade[] cidade;
 	
 	

@@ -6,9 +6,7 @@ public class Cidade {
 
 	private int id;
 	private String nome;
-	private String visitacao;
 	Estrada [] estradas;
-	private String [] interessadas;
 	
 	Scanner scan = new Scanner(System.in);
 	
