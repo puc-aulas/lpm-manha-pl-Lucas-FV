@@ -1,36 +1,40 @@
 package aplicacao;
 
-public class Estrada {
+import java.util.Scanner;
+
+public class Estrada<TIPO>{
 
 	private int id;
-	private int distancia;
-	Cidade[] cidade;
+	private Estrada<TIPO> inicio;
+	private Estrada<TIPO> fim;
 	
-	
-	
+	public Estrada(int id, Cidade<TIPO> inicio, Cidade<TIPO> fim){
+		this.id = id;
+		this.inicio = inicio;
+		this.fim = fim;
+	}
+
+	public Estrada<TIPO> getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(Estrada<TIPO> inicio) {
+		this.inicio = inicio;
+	}
+
+	public Estrada<TIPO> getFim() {
+		return fim;
+	}
+
+	public void setFim(Estrada<TIPO> fim) {
+		this.fim = fim;
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getDistancia() {
-		return distancia;
-	}
-	public void setDistancia(int distancia) {
-		this.distancia = distancia;
-	}
-	public String getVisitacao() {
-		return visitacao;
-	}
-	public void setVisitacao(String visitacao) {
-		this.visitacao = visitacao;
-	}
-	public Cidade[] getCidade() {
-		return cidade;
-	}
-	public void setCidade(Cidade[] cidade) {
-		this.cidade = cidade;
-	} 
-	
 }
