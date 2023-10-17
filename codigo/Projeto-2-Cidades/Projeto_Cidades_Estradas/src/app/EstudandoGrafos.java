@@ -1,27 +1,54 @@
 package app;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class EstudandoGrafos {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+    	
+    	File file= new File("/Users/felip/OneDrive/Área de Trabalho/arquivo.txt");
+    	Scanner scan = new Scanner(file);
         Grafo<String> grafo = new Grafo<String>();
-        grafo.adicionarVertice("Cidade do Cabo");
-        grafo.adicionarVertice("Joanesburgo");
-        grafo.adicionarVertice("Nairobi");
-        grafo.adicionarVertice("Paris");
-        grafo.adicionarVertice("Mumbai");
         
-        grafo.adicionarAresta(1270.0, "Cidade do Cabo", "Joanesburgo");
-        grafo.adicionarAresta(3900.0, "Cidade do Cabo", "Nairobi");
-        grafo.adicionarAresta(8900.0, "Cidade do Cabo", "Paris");
-        grafo.adicionarAresta(1270.0, "Joanesburgo", "Cidade do Cabo");
-        grafo.adicionarAresta(4700.0, "Joanesburgo", "Nairobi");
-        grafo.adicionarAresta(6500.0, "Joanesburgo", "Mumbai");
-        grafo.adicionarAresta(3900.0, "Nairobi", "Cidade do Cabo");
-        grafo.adicionarAresta(4700.0, "Nairobi", "Joanesburgo");
-        grafo.adicionarAresta(8900.0, "Paris", "Cidade do Cabo");
-        grafo.adicionarAresta(6500.0, "Mumbai", "Joanesburgo");
+        String[] linhas = new String[5];
+        String[][] dados = new String[5][2];
+        for (int i = 0;i<linhas.length;i++) {
+        	linhas[i] = scan.nextLine();
+		}
+        for (String string : linhas) {
+			System.out.println(string);
+		}
+        
+        System.out.println("-------X------");
+        
+        for (int i = 0; i < dados.length; i++) {
+        	
+			dados[i] = linhas[i].split(":");
+			
+			grafo.adicionarVertice(dados[i][0]);
+			
+		}
+        for (int i = 0; i < dados.length; i++) {
+        	
+			dados[i] = linhas[i].split(":");
+			
+			String[] dadosEstradas1 = dados[i][1].split(",");
+			
+			for(int j = 0; j< dadosEstradas1.length;j++) {
+								
+				String[] dadosEstradas2 = dadosEstradas1[j].split("[()]");
+				
+				double distancia = Double.parseDouble(dadosEstradas2[1]);
+				String inicio = dados[i][0];
+				String fim = dadosEstradas2[0].trim();
+				grafo.adicionarAresta(distancia, inicio, fim);
+			}
+		}
         
         grafo.buscaEmLargura();
         grafo.grafoConexo();
     }
 
-}
+}              
