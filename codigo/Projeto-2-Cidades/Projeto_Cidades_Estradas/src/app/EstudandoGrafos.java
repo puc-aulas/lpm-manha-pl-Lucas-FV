@@ -11,17 +11,22 @@ public class EstudandoGrafos {
     	File file= new File("/Users/felip/OneDrive/Área de Trabalho/arquivo.txt");
     	Scanner scan = new Scanner(file);
         Grafo<String> grafo = new Grafo<String>();
+        int numLinhas = 0;
+        while(scan.hasNextLine()) {
+        	numLinhas++;
+        	System.out.println(scan.nextLine());
+        }
+        System.out.println(numLinhas);
+        System.out.println("-------X------");
+        String[] linhas = new String[numLinhas];
+        String[][] dados = new String[numLinhas][2];
         
-        String[] linhas = new String[5];
-        String[][] dados = new String[5][2];
-        for (int i = 0;i<linhas.length;i++) {
+        file= new File("/Users/felip/OneDrive/Área de Trabalho/arquivo.txt");
+    	scan = new Scanner(file);
+        
+        for (int i = 0; i< numLinhas; i++) {
         	linhas[i] = scan.nextLine();
 		}
-        for (String string : linhas) {
-			System.out.println(string);
-		}
-        
-        System.out.println("-------X------");
         
         for (int i = 0; i < dados.length; i++) {
         	
@@ -46,9 +51,7 @@ public class EstudandoGrafos {
 				grafo.adicionarAresta(distancia, inicio, fim);
 			}
 		}
-        
         grafo.buscaEmLargura();
         grafo.grafoConexo();
     }
-
 }              
