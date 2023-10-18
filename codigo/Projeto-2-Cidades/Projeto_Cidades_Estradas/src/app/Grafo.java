@@ -43,7 +43,7 @@ public class Grafo<TIPO> {
             Vertice<TIPO> visitado = fila.get(0);
             for(int i=0; i < visitado.getArestasSaida().size(); i++){
                 Vertice<TIPO> proximo = visitado.getArestasSaida().get(i).getFim();
-                if (!marcados.contains(proximo)){ //se o vértice ainda não foi marcado
+                if (!marcados.contains(proximo)){ 
                     marcados.add(proximo);
                     System.out.println(proximo.getDado());
                     fila.add(proximo);
@@ -54,27 +54,34 @@ public class Grafo<TIPO> {
         System.out.println("-------------");
     }
     public void grafoConexo() {
-   
-    	Vertice<TIPO> atual = this.vertices.get(0);
-    	ArrayList<Vertice<TIPO>> contidos = new ArrayList<Vertice<TIPO>>();
-    	ArrayList<Vertice<TIPO>> naoContidos = this.vertices;
-    	for(int i = 1; i< this.vertices.size(); i++) {
-    		for (int j = 0; j < atual.getArestasSaida().size(); j++) {
-    			if(this.vertices.get(i).getDado().equals(atual.getArestasSaida().get(j).getFim().getDado())) {
-        			contidos.add(atual.getArestasSaida().get(j).getFim());
-        		}
-			}
-    	}
-    	naoContidos.removeAll(contidos);
-    	if(naoContidos.size()>1) {
-    		System.out.println("Grafo nao Conexo!!");
-    		System.out.println("Cidades nao conectadas:");
-        	for (int i = 1; i < naoContidos.size(); i++) {
-        		System.out.println(naoContidos.get(i).getDado());
+        ArrayList<Vertice<TIPO>> marcados = new ArrayList<Vertice<TIPO>>();
+        ArrayList<Vertice<TIPO>> fila = new ArrayList<Vertice<TIPO>>();
+        ArrayList<Vertice<TIPO>> naoMarcados = new ArrayList<Vertice<TIPO>>();
+        naoMarcados = vertices;
+        Vertice<TIPO> atual = this.vertices.get(0);
+        marcados.add(atual);
+        fila.add(atual);
+        while(fila.size() > 0){
+            Vertice<TIPO> visitado = fila.get(0);
+            for(int i=0; i < visitado.getArestasSaida().size(); i++){
+                Vertice<TIPO> proximo = visitado.getArestasSaida().get(i).getFim();
+                if (!marcados.contains(proximo)){ 
+                    marcados.add(proximo);
+                    fila.add(proximo);
+                }
+            }
+            fila.remove(0);
+        }
+        naoMarcados.removeAll(marcados);
+        if (!naoMarcados.isEmpty()) {
+        	System.out.println("Grafo nao conexo!");
+        	System.out.println("Destinos desconexos:");
+            for (int i = 0; i < naoMarcados.size(); i++) {
+            	System.out.println(naoMarcados.get(i).getDado());
     		}
-    	}else {
-    		System.out.println("Grafo Conexo!!");
-    	}
+		}else {
+			System.out.println("Grafo conexo!");
+		}
     	System.out.println("-------------");
     }
     
